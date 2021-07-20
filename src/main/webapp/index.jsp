@@ -11,7 +11,6 @@ pageEncoding="UTF-8"%> -->
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
     <!-- formulario de login -->
@@ -22,7 +21,6 @@ pageEncoding="UTF-8"%> -->
           <figure class="figure">
             <img
               src="img/undraw_wine_tasting_30vw.svg"
-              alt="fondo"
               class="figure-img img-fluid rounded"
             />
             <figcaption class="figure-caption">sunset...</figcaption>
