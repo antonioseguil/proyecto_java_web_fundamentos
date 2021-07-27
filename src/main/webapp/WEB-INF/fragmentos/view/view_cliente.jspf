@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div class="container-fluid" ng-controller="pedidoController">
+	<div class="row">
+		<div class="col-12 border-bottom p-2">
+			<p class="h3">
+				Carta <span class="h1">👨‍🍳️</span>
+			</p>
+		</div>
+
+		<div
+			class="
+            col-12 col-sm-6 col-md-4 col-xl-3
+            my-1
+            d-flex
+            justify-content-center
+          ">
+			<div class="card" style="width: 16rem">
+				<img
+					src="https://plazavea.vteximg.com.br/arquivos/ids/529908-450-450/20051087.jpg?v=637419667368070000"
+					class="card-img-top p-1" alt="..." style="height: 15rem" />
+				<div class="card-body">
+					<h5 class="card-title">Vino Queirolo</h5>
+					<p class="card-text" style="height: 7rem;">Vino Queirolo, 1L de
+						explendor, guardado de los Andes</p>
+					<a href="#" class="btn btn-success">Agregar</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+

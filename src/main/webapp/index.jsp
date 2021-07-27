@@ -1,16 +1,15 @@
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> -->
+<%
+HttpSession sesion = request.getSession();
+String estado = (String) sesion.getAttribute("estado");
+%>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <title>Login</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
+    <%@ include file="/WEB-INF/fragmentos/header_meta.jspf" %>
   </head>
   <body>
     <!-- formulario de login -->
@@ -27,10 +26,20 @@ pageEncoding="UTF-8"%> -->
           </figure>
         </div>
         <div class="col-4 mt-5 p-5">
-          <form class="row" action="home.jsp">
+          <form class="row" action="LoginController" method="post">
+          	
             <div class="col-12">
               <p class="h3 text-center">Iniciar sesión</p>
             </div>
+            
+            <% String error = (String) request.getAttribute("error"); %>
+            <%if(error != null){ %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <p>Usuario o contraseña erroneas, por favor revise sus credenciales.</p>
+			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+            <%} %>
+			
             <div class="col-12 mt-2">
               <div class="form-floating mb-3">
                 <input
@@ -39,6 +48,7 @@ pageEncoding="UTF-8"%> -->
                   type="text"
                   class="form-control"
                   placeholder="Usuario"
+                  required
                 />
                 <label for="txtUsuario">Usuario:</label>
               </div>
@@ -51,6 +61,7 @@ pageEncoding="UTF-8"%> -->
                   type="password"
                   class="form-control"
                   placeholder="password"
+                  required
                 />
                 <label for="txtPassword">Contraseña:</label>
               </div>
@@ -60,20 +71,17 @@ pageEncoding="UTF-8"%> -->
                 Ingresar
               </button>
             </div>
+            
           </form>
         </div>
       </div>
     </div>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-      crossorigin="anonymous"
-    ></script>
+    
+	<%if(estado == "true"){ %>
+	<script>
+	location.href = "home.jsp";
+	</script>
+	<%} %>
+    <%@ include file="/WEB-INF/fragmentos/footer_meta.jspf" %>
   </body>
 </html>
