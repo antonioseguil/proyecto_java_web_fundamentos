@@ -7,6 +7,7 @@ public class Plato {
 	private String descripcion;
 	private String imagen;
 	private double precio;
+	private int cantidad;
 	
 	public Plato() {
 		
@@ -50,6 +51,14 @@ public class Plato {
 	}
 	public void setPrecio(double precio) {
 		this.precio = precio;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
 
 }

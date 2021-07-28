@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
 import bd.PlatoBd;
 import data.PlatoData;
 
@@ -35,16 +33,17 @@ public class PlatoController extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		
-		platoDao.getPlatos();		
-//		PrintWriter out = response.getWriter();
-//		response.setContentType("application/json");
-//		response.setCharacterEncoding("UTF-8");
-//		out.print("");
-//		out.flush();
+		response.setContentType("application/json;charset=utf-8");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(platoDao.getPlatos());
+		out.close();
 	}
 
 	/**

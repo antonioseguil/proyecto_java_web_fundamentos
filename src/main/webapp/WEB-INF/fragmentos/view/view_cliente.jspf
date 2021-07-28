@@ -3,12 +3,19 @@
 <div class="container-fluid" ng-controller="pedidoController">
 	<div class="row">
 		<div class="col-12 border-bottom p-2">
-			<p class="h3">
+			<p class="h3 float-start">
 				Carta <span class="h1">👨‍🍳️</span>
 			</p>
+			
+			<div class="float-end p-2">
+			<button type="button" class="btn btn-info" ng-click = "view_pedidos = !view_pedidos">
+			Pedido <span class="badge bg-danger">{{pedido.platos.length}}</span>
+			</button>
+			</div>
 		</div>
 
 		<div
+			ng-repeat="(key,obj) in data"
 			class="
             col-12 col-sm-6 col-md-4 col-xl-3
             my-1
@@ -17,17 +24,47 @@
           ">
 			<div class="card" style="width: 16rem">
 				<img
-					src="https://plazavea.vteximg.com.br/arquivos/ids/529908-450-450/20051087.jpg?v=637419667368070000"
+					src="{{obj.imagen}}"
 					class="card-img-top p-1" alt="..." style="height: 15rem" />
 				<div class="card-body">
-					<h5 class="card-title">Vino Queirolo</h5>
-					<p class="card-text" style="height: 7rem;">Vino Queirolo, 1L de
-						explendor, guardado de los Andes</p>
-					<a href="#" class="btn btn-success">Agregar</a>
+					<h5 class="card-title">{{obj.plato}}</h5>
+					<p class="card-text" style="height: 9rem;font-size: 0.8rem;">
+					{{obj.descripcion}}
+					</p>
+					<p class="h5">Precio: {{obj.precio | currency:"S/"}}</p>
+					<button class="btn btn-success" ng-click="addPedido(obj)">Agregar</button>
 				</div>
 			</div>
 		</div>
-
+	</div>
+	
+	
+	<div class="mb-5 mx-5 row fixed-bottom " ng-show="view_pedidos">
+		<div class="offset-8 col-4 border rounded-3">
+			<div class="row">
+				<div class="col-12 bg-info">
+					<p class="text-center h2 text-light">{{titlePedido}}</p>
+				</div>
+				<div col-12 p-5>
+				 	<ul class="list-group mt-2 p-2">
+					  <li class="list-group-item d-flex justify-content-between align-items-center" ng-repeat = "(index, obj) in pedido.platos">
+					    {{obj.plato}} - {{obj.precio | currency:"S/"}}
+					    <span class="badge bg-primary rounded-pill">{{obj.cantidad}}</span>
+					  </li>
+					</ul>
+				</div>
+				
+				<div class="col-12 border-top">
+					<p class="text-end px-4 py-1">Total: {{pedido.total | currency:"S/"}} </p>
+				</div>
+				
+				<div class="col-12 px-4 py-3">
+					<div class="d-grid gap-2" ng-show ="pedido.platos.length >= 1 && !pedidoEnviado">
+						<button type="button" class="btn btn-success btn-block" ng-click = "sendPedido()">Enviar</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 

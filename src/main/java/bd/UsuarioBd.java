@@ -7,7 +7,6 @@ import model.Usuario;
 public class UsuarioBd {
 
 	public static ArrayList<Usuario> usuarioList = new ArrayList<>();
-	
 
 	public UsuarioBd() {
 		if (UsuarioBd.usuarioList.isEmpty()) {

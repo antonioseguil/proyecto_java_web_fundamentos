@@ -37,11 +37,12 @@ public class LoginController extends HttpServlet {
 		String usuario = request.getParameter("txtUsuario");
 		String password = request.getParameter("txtPassword");
 		Usuario loginUsuario = usuarioDao.loginUsuario(usuario, password);
+		HttpSession sesionLogin = request.getSession(true);
 		if(loginUsuario == null) {
 			request.setAttribute("error", "1");
+			sesionLogin.setAttribute("estado","false");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}else {
-			HttpSession sesionLogin = request.getSession(true);
 			sesionLogin.setAttribute("usuario", loginUsuario);
 			sesionLogin.setAttribute("tipoUsuario", loginUsuario.getTipoUsuario());
 			sesionLogin.setAttribute("estado","true");
