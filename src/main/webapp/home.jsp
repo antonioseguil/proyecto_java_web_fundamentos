@@ -27,6 +27,9 @@
 	<nav class="navbar navbar-dark bg-info m-1 rounded">
 	  <div class="container-fluid">
 	    <span class="navbar-brand p-3 mb-0 h1">☀️SunSet !Hola <%=usuario.getNombre() %>! </span>
+	    <div class="float-end">
+	    	<a href="LogoutController" class="btn btn-primary">Cerrar sesión</a>
+	    </div>
 	  </div>
 	</nav>
 	<%if(tipoUsuario == 0) {%>
@@ -34,8 +37,6 @@
 	<%}else{%>
 		<%@ include file="/WEB-INF/fragmentos/view/view_trabajador.jspf" %>
 	<%} %>
-	
-	
 	
 <%} else{%>
 <script>

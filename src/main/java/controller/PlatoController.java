@@ -18,7 +18,6 @@ import data.PlatoData;
 @WebServlet("/PlatoController")
 public class PlatoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private PlatoBd platobd;
 	private PlatoData platoDao;
 
 	/**
@@ -26,7 +25,7 @@ public class PlatoController extends HttpServlet {
 	 */
 	public PlatoController() {
 		super();
-		platobd = new PlatoBd();
+		new PlatoBd();
 		platoDao = new PlatoData();
 
 		// TODO Auto-generated constructor stub

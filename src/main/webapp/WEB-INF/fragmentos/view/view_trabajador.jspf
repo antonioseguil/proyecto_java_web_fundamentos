@@ -1,1 +1,21 @@
-<h1>VISTA TRABAJADOR</h1>
+<div class="container-fluid p-2" ng-controller="trabajadorController">
+	<div class="row">
+		<div class="col-12 col-md-4" ng-repeat="(index, pedido) in pedidos">
+			<div class="card" style="width: 20rem;">
+				<div class="card-body">
+					<h5 class="card-title">Mesa: {{pedido.mesa}}</h5>
+					<ul class="list-group my-5">
+						<li class="list-group-item" ng-repeat="plato in pedido.platos">
+							{{plato.plato}} | cantidad: {{plato.cantidad}}</li>
+					</ul>
+					<div class="d-grid gap-2">
+						<button class="btn btn-success" type="button" ng-show="!pedido.estado" ng-click="terminatePedido(index)">Listo</button>
+						<button class="btn btn-danger" type="button" ng-show="pedido.estado" ng-click="deletePedido(index)">Terminado</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
